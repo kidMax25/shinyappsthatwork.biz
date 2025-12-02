@@ -1,0 +1,87 @@
+<!-- Hero Section -->
+<section id="home" class="relative h-screen overflow-hidden">
+    <!-- Background Slideshow -->
+    <div class="absolute inset-0 bg-black">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80" alt="Tech" class="slide">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80" alt="Business Analytics" class="slide">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80" alt="Data Visualization" class="slide">
+        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1920&q=80" alt="Modern Office" class="slide">
+        <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+    
+    <!-- Hero Content -->
+    <div class="relative z-10 h-full flex items-center justify-center">
+        <div class="text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                Efficient Shiny Applications<br>and Solutions
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                Modern, secure, and visually compelling data applications
+            </p>
+            <div class="flex gap-4 justify-center">
+                <a href="#" onclick="showPage('gallery'); return false;" class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 h-12 px-8 transition-colors">
+                    View Gallery
+                </a>
+                <a href="#contact" class="inline-flex items-center justify-center rounded-md text-sm font-medium border border-white/20 bg-white/10 hover:bg-white/20 h-12 px-8 transition-colors">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="min-h-screen bg-black py-20 px-4 flex items-center">
+    <div class="max-w-2xl mx-auto w-full">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">Contact Us</h2>
+        <div class="h-1 w-24 bg-white/20 mx-auto mb-8"></div>
+        <p class="text-center text-xl text-gray-300 mb-12">Drop us a line!</p>
+        
+        <form class="space-y-6" onsubmit="event.preventDefault(); alert('Thank you for your message! We will get back to you soon.'); this.reset();">
+            <div>
+                <input 
+                    type="text" 
+                    placeholder="Name" 
+                    class="w-full px-4 py-3 bg-transparent border border-white/20 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+                >
+            </div>
+            
+            <div>
+                <input 
+                    type="email" 
+                    placeholder="Email*" 
+                    required
+                    class="w-full px-4 py-3 bg-transparent border border-white/20 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+                >
+            </div>
+            
+            <div>
+                <textarea 
+                    placeholder="Message" 
+                    rows="6"
+                    class="w-full px-4 py-3 bg-transparent border border-white/20 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                ></textarea>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <input 
+                    type="checkbox" 
+                    id="newsletter"
+                    class="w-4 h-4 rounded border-white/20 bg-transparent"
+                >
+                <label for="newsletter" class="text-sm text-gray-400">
+                    Sign up for our email list for updates, promotions, and more.
+                </label>
+            </div>
+            
+            <div class="text-center">
+                <button 
+                    type="submit"
+                    class="inline-flex items-center justify-center rounded-md text-sm font-semibold bg-white text-black hover:bg-gray-200 h-12 px-12 transition-colors"
+                >
+                    SEND
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
