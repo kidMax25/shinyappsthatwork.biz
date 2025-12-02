@@ -136,8 +136,6 @@
     <script>
         // Page navigation
         function showPage(pageName) {
-    
-    
     // Hide all pages
     document.querySelectorAll('.page-content').forEach(page => {
         page.classList.remove('active');
@@ -148,13 +146,12 @@
     if (targetPage) {
         targetPage.classList.add('active');
         
-        
-        // Force Shiny to recalculate outputs
+        // Force Shiny to bind new inputs (correct method)
         if (typeof Shiny !== 'undefined') {
-            Shiny.bindAll();
+            setTimeout(() => {
+                Shiny.bindAll(targetPage);
+            }, 100);
         }
-    } else {
-        console.error('Page not found:', pageName + '-page');
     }
     
     // Update nav links

@@ -1,12 +1,49 @@
 library(shiny)
 
+source("R/modules/contact.R")
+
 
 server <- function(input, output, session) {
   
   # Render Home Page Content
   output$home <- renderUI({
     print("Rendering home page")
-    includeHTML("app/home.html")
+    tagList(
+      includeHTML("app/home.html"),
+      
+      
+      tags$script(HTML("
+      // Create Shiny input bindings manually
+      $(document).ready(function() {
+        // Text inputs
+        Shiny.setInputValue('contact_name', '', {priority: 'event'});
+        Shiny.setInputValue('contact_email', '', {priority: 'event'});
+        Shiny.setInputValue('contact_message', '', {priority: 'event'});
+        Shiny.setInputValue('contact_newsletter', false, {priority: 'event'});
+        
+        // Listen to changes
+        $('#contact_name').on('input', function() {
+          Shiny.setInputValue('contact_name', $(this).val());
+        });
+        
+        $('#contact_email').on('input', function() {
+          Shiny.setInputValue('contact_email', $(this).val());
+        });
+        
+        $('#contact_message').on('input', function() {
+          Shiny.setInputValue('contact_message', $(this).val());
+        });
+        
+        $('#contact_newsletter').on('change', function() {
+          Shiny.setInputValue('contact_newsletter', $(this).is(':checked'));
+        });
+        
+        $('#contact_submit').on('click', function() {
+          Shiny.setInputValue('contact_submit', Math.random(), {priority: 'event'});
+        });
+      });
+    "))
+            )
   })
   
   # Render Gallery Page Content
@@ -23,12 +60,20 @@ server <- function(input, output, session) {
     includeHTML("app/gallery.html")
   })
   
-  # Handle contact form submission
-  observeEvent(input$submit_contact, {
-    showNotification(
-      "Thank you for your message! We'll get back to you soon.",
-      type = "message",
-      duration = 5
-    )
+  setup_contact_form(
+    input = input,
+    output = output,
+    session = session,
+    recipient_email = Sys.getenv("RECIPIENT_EMAIL"),
+    from_email = Sys.getenv("FROM_EMAIL")
+  )
+  
+  # Debug: Print when contact form is submitted
+  observeEvent(input$contact_submit, {
+    cat("=== Contact Form Submitted ===\n")
+    cat("Name:", input$contact_name, "\n")
+    cat("Email:", input$contact_email, "\n")
+    cat("Message:", input$contact_message, "\n")
+    cat("Newsletter:", input$contact_newsletter, "\n")
   })
 }

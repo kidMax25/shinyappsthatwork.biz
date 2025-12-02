@@ -1,4 +1,8 @@
 library(shiny)
+library(dotenv)
+
+load_dot_env()
+cat("RESEND_API_KEY loaded", Sys.getenv("RESEND_API_KEY") != "", "\n")
 
 options(shiny.autoreload = TRUE)
 

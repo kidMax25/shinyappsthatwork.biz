@@ -3,7 +3,7 @@
     "path": "C:/Users/snmax/OneDrive/Desktop/Shinyx/company-website/run.R",
     "project_path": "run.R",
     "type": "r_source",
-    "hash": "2799900440",
+    "hash": "2501967589",
     "contents": "",
     "dirty": false,
     "created": 1764589884752.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "13,0",
+        "cursorPosition": "17,0",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1764659079,
+    "lastKnownWriteTime": 1764678633,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1764659079040,
+    "last_content_update": 1764678633262,
     "read_only": false,
     "read_only_alternatives": []
 }
