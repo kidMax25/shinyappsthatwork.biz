@@ -4,3 +4,4 @@
 .Ruserdata
 .env
 .Renviron
+data/newsletter_subscribers.csv

@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install R packages (dotenv is optional, will only be used if .env exists)
-RUN R -e "install.packages(c('shiny', 'httr', 'jsonlite'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shiny', 'httr', 'jsonlite', 'dotenv'), repos='https://cloud.r-project.org/')"
 
 # Create app directory
 WORKDIR /app
