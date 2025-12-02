@@ -1,4 +1,5 @@
-FROM rocker/shiny:latest
+# Use official R Shiny base image
+FROM rocker/shiny:4.3.1
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -8,13 +9,22 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install R packages
-RUN R -e "install.packages(c('shiny','jsonlite', 'httr'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shiny', 'httr', 'jsonlite', 'dotenv'), repos='https://cloud.r-project.org/')"
 
-# Copy your Shiny app to the container
-COPY . /srv/shiny-server/
+# Create app directory
+RUN mkdir -p /app
+
+# Set working directory
+WORKDIR /app
+
+# Copy app files
+COPY . /app
 
 # Expose port
-EXPOSE 3838
+EXPOSE 5000
 
-# Run Shiny Server
-CMD ["/usr/bin/shiny-server"]
+# Set environment variable for port
+ENV PORT=5000
+
+# Run the app
+CMD ["Rscript", "run.R"]
