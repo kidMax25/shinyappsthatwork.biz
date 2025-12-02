@@ -1,8 +1,14 @@
 library(shiny)
 library(dotenv)
 
-load_dot_env()
-cat("RESEND_API_KEY loaded", Sys.getenv("RESEND_API_KEY") != "", "\n")
+if (file.exists(".env")){
+  load_dot_env()
+  cat("RESEND_API_KEY loaded", Sys.getenv("RESEND_API_KEY") != "", "\n")
+} else {
+  cat("using Production variables")
+}
+
+
 
 port <- as.numeric(Sys.getenv("PORT", "5000"))
 host <- Sys.getenv("HOST", "0.0.0.0")
