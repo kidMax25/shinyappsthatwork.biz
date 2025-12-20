@@ -5,7 +5,7 @@ source("R/modules/contact.R")
 
 server <- function(input, output, session) {
   
-  # Render Home Page Content
+  
   output$home <- renderUI({
     print("Rendering home page")
     tagList(
@@ -46,7 +46,7 @@ server <- function(input, output, session) {
             )
   })
   
-  # Render Gallery Page Content
+  
   output$gallery <- renderUI({
     if (!file.exists("app/gallery.html")) {
       print("ERROR: app/gallery.html not found!")
@@ -68,9 +68,8 @@ server <- function(input, output, session) {
     from_email = Sys.getenv("FROM_EMAIL")
   )
   
-  # Debug: Print when contact form is submitted
+  
   observeEvent(input$contact_submit, {
-    cat("=== Contact Form Submitted ===\n")
     cat("Name:", input$contact_name, "\n")
     cat("Email:", input$contact_email, "\n")
     cat("Message:", input$contact_message, "\n")
